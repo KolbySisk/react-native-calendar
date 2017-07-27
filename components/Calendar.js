@@ -31,6 +31,7 @@ export default class Calendar extends Component {
   };
 
   static propTypes = {
+    displayMode: PropTypes.bool,
     currentMonth: PropTypes.any,
     customStyle: PropTypes.object,
     dayHeadings: PropTypes.array,
@@ -244,6 +245,7 @@ export default class Calendar extends Component {
             isWeekend: isoWeekday === 0 || isoWeekday === 6,
             key: renderIndex,
             onPress: () => {
+              if(this.props.displayMode) return
               this.selectDate(thisMoment);
               this.props.onDateSelect && this.props.onDateSelect(thisMoment ? thisMoment.format() : null );
             },
